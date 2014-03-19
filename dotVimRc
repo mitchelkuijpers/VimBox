@@ -171,6 +171,10 @@
 "
 " 2. Open up yet another VIM window, to install newly added plugins.
 
+if &shell =~# 'fish$'
+  set shell=sh
+endif
+
 filetype plugin on " Required for NeoBundle and also good.
 filetype indent on " Required for NeoBundle and also good.
 if has('vim_starting')
