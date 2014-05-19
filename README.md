@@ -1,10 +1,11 @@
-<h1>VimBox</h1>
-<blockquote>Clean and Simple MacVim Editing</blockquote>
+<table width="100%">
+<tr>
+</tr>
 
-<table>
 <tr>
 <td>
-
+<h2>VimBox</h2>
+<blockquote>Modern MacVim Configuration</blockquote>
 <img src="dotVim/images/VimBox.png" height="256px" width="256px" />
 </td>
 <td>
@@ -21,12 +22,11 @@
 </table>
 
 
-> `VimBox` configures MacVim to behave like modern editors such as Sublime.
 
 
 Screen Shot:
 -------------
-<img src="https://github.com/jordwalke/flatlandia/raw/master/images/flatlandia_completion.png" />
+<img src="dotVim/images/flatlandia_completion.png" />
 
 
 
@@ -34,27 +34,26 @@ Installation:
 -------------
 > Quickly try VimBox in place of your existing setup. Back up your existing vim files, and move them out of the way as instructed:
 
-1. If you already have MacVim installed:
-
-        mv /Applications/MacVim.app /Applications/MacVim_Backup.app
-
-2. If you already have a vim setup, move it safely out of the way or back it up.
+1. If you already have a vim setup, move it safely out of the way or back it up.
 
         mv ~/.vim ~/.vim_backup    #No trailing slashes to preserve symlinks!
         mv ~/.vimrc ~/.vimrc_backup
         mv ~/.gvimrc ~/.gvimrc_backup
 
 
-3. Install HomeBrew if needed.
+2. You *Must* Install a Recent Version of MacVim: (Snapshot 72 or above) (with python support)
 
-        http://brew.sh/
+        Lion/Mountain Lion: Snapshot 72:
+        https://github.com/eee19/macvim/releases
 
-4. Install MacVim with lua/python support using HomeBrew:
+        Mavericks: Snapshot 72 here:
+        https://github.com/b4winckler/macvim/releases
 
-        brew install macvim --with-cscope --with-lua --python --HEAD
+        # Alternatively, if you'd rather install via `brew`
+        brew install macvim --with-cscope --python --HEAD
         brew linkapps    # Put the app in your /Applications directory
 
-6. Clone `VimBox` wherever you like to keep your github clones
+3. Clone `VimBox` wherever you like to keep your github clones
 
         # cd ~/github/     # Or wherever you like to keep github clones
         git clone https://github.com/jordwalke/VimBox/
@@ -62,60 +61,61 @@ Installation:
         ln -s `pwd`/VimBox/dotVimRc ~/.vimrc
         ln -s `pwd`/VimBox/dotGVimRc ~/.gvimrc
 
-7. Start `MacVim` that was installed from `homebrew`. Confirm that you want to install bundles. If it asks you to hit any key to continue, just keep hitting enter. Restart `MacVim` when it's finished.
+4. Start `MacVim` that you just installed. Confirm that you want to install bundles. If it asks you to hit any key to continue, just keep hitting enter. Restart `MacVim` when it's finished.
 
-Optional Install:
------------------
-       
-1. Install vim-airline font:
-> You should install this font so that the `vim-airline` themes look decent (as in the screenshot).
+5. `[Recommended]` Install the included vim-airline font so `VimBox` looks like
+   the screenshot with the `vim-airline` bar. From the command line:
 
-        open Fonts/Inconsolata-dz+for+Powerline.otf
-        # Click "Install Font"
+        open ./VimBox/dotVim/Fonts/InconsolataDz/Inconsolata-dz\ for\ Powerline.otf # Then click "Install Font"
 
-2. Install node.js if you want JS features such as linting (http://nodejs.org/)
+6. Install up-to-date node.js if you want JS linting (http://nodejs.org/)
 
 
 Features:
 ----------
 
-####Familiar Mac Key Commands
+#####Familiar Mac Key Commands
 
-| Key          | Action        |
-| ------------ |-------------|
-| `⌘+n`       | New Tab        
-| `⌘+shift+n`       | New Window  |
-| `⌘+shift+t`       | Reopen Last Closed Tab   |
-| `⌘+w`       | Close tab/split/window   |
-| `⌘+s`       | Save file  |
-| `⌘+z`       | Undo  |
-| `⌘+shift+z`       | Redo  |
-| `⌘+enter`       | Special Distraction-Free FullScreen Mode|
-| `⌘+e`       | Toggle File Explorer (Docked `NERDTree`) |
-| `⌘+shift+[` / `⌘+shift+]` |Go to previous/next tab |
-| `^+tab` / `^+shift+tab` |Go to previous/next tab (in normal Vim mode)|
-| `⌘+1 `  |                 Go to tab `1` |
-| `⌘+p`       | Open Anything (`ctrl-p`) |
-| `F5`       | Sort lines (like Textmate) |
+| Key                       | Action                                          |
+| ------------------------- |-------------------------------------------------|
+| `⌘+p`                     | Open Anything (`ctrl-p`)                        |
+| `⌘+n`                     | New Tab                                         |
+| `⌘+shift+n`               | New Window                                      |
+| `⌘+shift+t`               | Reopen Last Closed Tab                          |
+| `⌘+w`                     | Close tab/split: Opens to the left (like Sublime) not right (like vim)  |
+| `⌘+s`                     | Save file                                       |
+| `⌘+z`                     | Undo                                            |
+| `⌘+shift+z`               | Redo                                            |
+| `⌘+enter`                 | Special Distraction-Free FullScreen Mode        |
+| `⌘+e`                     | Toggle File Explorer (Docked `NERDTree`)        |
+| `⌘+shift+[` / `⌘+shift+]` | Go to previous/next tab                         |
+| `^+tab` / `^+shift+tab`   | Go to previous/next tab (in normal Vim mode)    |
+| `⌘+1 `                    |                 Go to tab `1`                   |
+| `F5`                      | Sort lines (like Textmate)                      |
+| `⌘+shift+p`               | Toggle spell-check                              |
+| `⌘+/`                     | Toggle comments - selected range - or line      |
 
 #####Mega Escape
-> `VimBox` has mapped `^+l` to exit out of any modal window/prompt/mode/command to bring you back to normal Vim navigation mode. It's like the home button on the iPhone. Remap <a href="http://stackoverflow.com/questions/15435253/how-to-remap-the-caps-lock-key-to-control-in-os-x-10-8"> CapsLock to control</a> and never reach for `Escape` again. Hit the `CapsLock` key and `l` right on the home row.
+> - `VimBox` has mapped `^+l` to exit out of any modal window/prompt/mode/command to bring you back to normal Vim navigation mode.
+> - It's like the home button on the iPhone.
+> - Unlike regular `<Esc>`, mega-escape doesn't move your cursor when escaping.
+> - Remap <a href="http://stackoverflow.com/questions/15435253/how-to-remap-the-caps-lock-key-to-control-in-os-x-10-8"> CapsLock to control</a> and never reach for `Escape` again. Hit the `CapsLock` key and `l` right on the home row.
 
-| Key          | Action        |
+| Key          | Action      |
 | ------------ |-------------|
-| `^+l`       | Mega Escape |
+| `^+l`        | Mega Escape |
 
-####Airline/Flatlandia
+#####Airline/Flatlandia
 
 Vim had a flat design Before It Was Cool. `VimBox` includes `vim-airline` and `flatlandia`.
 
-####Braces and Pairs
+#####Braces and Pairs
 
 - Inserting `{`, `[`, `'`, or `"` automatically inserts the closing character.
 - When hitting enter with the cursor between two braces `{|}` the newline is formatted with an extra indentation.
 - The behavior is identical to Sublime/Textmate.
 
-####AutoComplete/Snippets
+#####AutoComplete/Snippets
 
 - Completions pop up automatically.
 - Like Sublime, `VimBox` accepts highlighted entries via `tab` or `enter`.
@@ -123,17 +123,17 @@ Vim had a flat design Before It Was Cool. `VimBox` includes `vim-airline` and `f
 - Place custom snippets in `~/.vim/myUltiSnippets/`
 
 
-####Distraction Free UI Tabs
+#####Distraction Free UI Tabs
 
 - When not in full screen mode, Mac style metalic tabs are used.
 - When in full-screen mode, those tabs become flat and blend into the background so you can focus on the code.
 
 
-####One File, One Location
+#####One File, One Location
 
 Included plugins are configured so that opening a file will always focus the window/tab/split where that file is already open. This is how most modern editors work.
 
-####Command-P Search Window
+#####Command-P Search Window
 
 `VimBox` includes the `ctrl-p` plugin and has been configured with keymappings that are consistent with its `NERDTree` keymappings.
 
@@ -144,25 +144,25 @@ Included plugins are configured so that opening a file will always focus the win
 | `c-s`        | While searching, opens the top hit in a vertical split or jump to existing window if already open |
 | `c-h`        | While searching, opens the top hit in horizontal split or jump to existing window if already open |
 
-####NERDTree
+#####NERDTree
 
 `NERDTree` is included and is configured to act as a left-nav bar (toggle it via `⌘+e`). Its keymappings have been configured to be consistent with the `ctrl-p` plugin.
 
 | Key          | Action        |
 | ------------ |-------------|
-| `⌘+e`       | Toggle side bar file exporer |
+| `⌘+e`       | Toggle side bar file explorer |
 | `j`/`k`      | While explorer focused, move up and down |
 | `enter`      | While explorer focused, opens a file in new tab or jump to existing window if already open |
 | `s`          | While explorer focused, opens a file in a vertical split or jump to existing window if already open |
 | `h`          | While explorer focused, opens a file in horizontal split or jump to existing window if already open |
 | `u`          | While explorer focused, Move up a directory |
 | `o`          | While explorer focused, Expand a subdirectory |
-| `CD`         | While explorer focused, Make the file exporer's directory equal to Vim's `cwd`  |
+| `CD`         | While explorer focused, Make the file explorer's directory equal to Vim's `cwd`  |
 | `cd`         | While explorer focused, make Vim's `cwd` equal to the directory under the cursor |
 | `m`         | While explorer focused, show complete menu of possible commands to execute |
 
 
-####Tabs And Splits Navigation
+#####Tabs And Splits Navigation
 > Jump around quickly to the next tab or split with a single key press. Go back the other direction by pressing shift.
 
 | Key          | Action        |
@@ -176,7 +176,7 @@ Included plugins are configured so that opening a file will always focus the win
 #####JavaScript Linting
 - Excellent JavaScript indenting and inline linting with support for `JSX`.
 
-<img src="https://github.com/jordwalke/VimJSXHint/raw/master/images/VimJSXHint.png" />
+<img src="dotVim/images/VimJSXHint.png" />
 
 #####JavaScript Snippets
 - JavaScript snippets are include, but you can add your own for any language you like
@@ -201,7 +201,53 @@ The following key mapping generates docblock comments. `<tab>` will select the p
 
 | Key          | Action        |
 | ------------ |-------------|
-| `⌘+shift+c` | Generate JS Docblock  - when currsor is above a function| 
+| `⌘+shift+c` | Generate JS Docblock  - when currsor is above a function|
+
+
+Git Integration:
+---------
+
+#####Setup DiffTool:
+
+Any result of a `git diff` command can be viewed in a side-by-side diff view inside of `MacVim`. All of your familiar `vim` key commands work while browsing your diff. Place this in your `~/.gitconfig`:
+
+        [diff]
+            tool = default-difftool
+        [difftool "default-difftool"]
+            cmd = "~/.vim/mvimgitdiff.sh " $LOCAL $REMOTE
+
+Now you can use the `git difftool` command exactly like you use `git diff`, but a MacVim window will appear:
+
+<img src="dotVim/images/VimBoxGitDiffTool.png" />
+
+#####Setup MergeTool:
+
+Resolving merge conflicts is simple with `MacVim`. Just put this in your `~/.gitconfig`.
+
+        [mergetool]
+          prompt = false
+          # See bashrc for exporting the editor across all apps, not just git.
+        [mergetool "mvimdiff"]
+          cmd="mvim -f '+windo set diff scrollbind scrollopt+=hor nowrap' -c 'Gdiff' $MERGED -c 'au VimLeave * !open -a iTerm'"
+          # cmd="mvim -c 'Gdiff' $MERGED"     # use fugitive.vim for 3-way merge
+          keepbackup=false
+
+        [merge]
+          tool = mvimdiff
+
+
+Now, `git mergetool` will resolve rebase and merge conflicts directly inside of `MacVim`.
+
+
+#####Setup Commit Message Editor:
+
+Make sure to tell your shell that `MacVim` is the way that you'd like to edit commit messages. This special command will ensure that when you close your `MacVim` window, you will return back to the command line `iTerm`. Replace with your shell rc file and terminal app name.
+
+
+    echo export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a iTerm"' >> ~/.bashrc
+    echo export GIT_EDITOR='mvim -f --nomru -c "au VimLeave * !open -a iTerm"' >> ~/.bashrc
+
+
 
 
 Plugin System:
@@ -213,3 +259,23 @@ Plugin System:
 - Edit `~/.vim/vimrc.custom.before` and `~/.vim/vimrc.custom.after`.
 - `~/.vim/vimrc.custom.before` is executed before the stock plugins are configured.
 - `~/.vim/vimrc.custom.after` is executed after the stock plugins are configured.
+
+
+Customizing:
+---------
+In `~/.vim/vimrc.custom.before`/`~/.vim/vimrc.custom.after` you may set any options you like. (See "Plugin System" section below).
+
+`VimBox` will look to see if you have defined the following variables defined in your `~/.vim/vimrc.custom.before`:
+
+| Key                      | Behavior                |
+| ------------------------ |-------------------------|
+| `let g:textColumns = 82` | Set text wrapping width |
+| `let g:tabSize = 2`      | Set tab width           |
+
+
+License:
+-------
+
+See the license file included. Any dependencies that are included in `VimBox`
+may have their own license. In the event any dependency is include in `VimBox`,
+an attempt has been made to also include its corresponding license.

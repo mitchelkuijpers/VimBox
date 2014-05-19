@@ -18,8 +18,13 @@ NeoBundle "jordwalke/VimAutoMakeDirectory"
 " ==============================================================================
 
 
-" ======================= Custom Resizing for SplitBalancer ======================
+" ======================= Custom Resizing for SplitBalancer ====================
 NeoBundle "git://github.com/jordwalke/VimSplitBalancer.git"
+" ==============================================================================
+
+
+" ================== Allow plugins to tap into repeating =======================
+NeoBundle "git://github.com/tpope/vim-repeat.git"
 " ==============================================================================
 
 " ==============================================================================
@@ -71,7 +76,7 @@ NeoBundle "git://github.com/tpope/vim-surround.git"
 "       \     'unix' : 'make -f make_unix.mak',
 "       \    },
 "       \ }
-
+"
 " NeoBundle "git://github.com/Shougo/unite.vim.git"
 " source ~/.vim/pluginRc/uniteVimRc
 
@@ -166,6 +171,7 @@ NeoBundle "jordwalke/MacVimSmartGUITabs"
 " Make sure to have `set guioptions+=e` in your `.gvimrc`.
 map <D-Cr> :SmartGUITabsToggleFullScreen<CR>
 imap <D-Cr> <Esc>:SmartGUITabsToggleFullScreen<CR>
+nmap <D-Cr> <Esc>:SmartGUITabsToggleFullScreen<CR>
 " ==============================================================================
 
 
@@ -330,30 +336,34 @@ source ~/.vim/pluginRc/ctrlPVimRc
 " ==============================================================================
 
 
-" ============================= UltiSnips-quite awesome=========================
+" ============================= ACP Forked =========================
 " Check out snippets in ~/.vim/personalSnippets/
-NeoBundle "Shougo/neocomplete.vim"
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_auto_select = 1
-
-NeoBundle "git://github.com/SirVer/ultisnips.git"
-NeoBundle "jordwalke/VimCompleteLikeAModernEditor"
-
-" ============================= Commenter ======================================
-NeoBundle "git://github.com/tpope/vim-commentary.git"
+NeoBundle "https://github.com/jordwalke/AutoComplPop"
 " ==============================================================================
 
-" Allow ocaml comments toggling
-autocmd FileType ocaml set commentstring=(*\ %s\ *)
+" ============================= UltiSnips ======================================
+"See corresponding entries in `.keysVimRc`.
+NeoBundle "git://github.com/SirVer/ultisnips.git"
+let g:UltiSnipsSnippetsDir="~/.vim"
+let g:UltiSnipsSnippetDirectories=["myUltiSnippets"]
+" ==============================================================================
 
+" ======== Combine Previous Plugins For Modern Completion Experience ===========
+NeoBundle "jordwalke/VimCompleteLikeAModernEditor"
+" ==============================================================================
+
+" ============================= Commenter ======================================
+NeoBundle "https://github.com/tomtom/tcomment_vim"
+" ==============================================================================
 
 
 NeoBundle "https://github.com/pangloss/vim-javascript"
 
-
 " =============================Javascript-Indent================================
 NeoBundle "git://github.com/vim-scripts/JavaScript-Indent.git"
 " ==============================================================================
+
+NeoBundle "https://github.com/mxw/vim-jsx"
 
 
 
@@ -386,7 +396,6 @@ map <silent><D-R> :w<CR>:OpenDebugger<CR>
 " ciP  (change in paramater  - changes the single argument under cursor!
 NeoBundle "git://github.com/vim-scripts/Parameter-Text-Objects.git"
 " ==============================================================================
-
 
 
 " ============================ GUndo ============================================
